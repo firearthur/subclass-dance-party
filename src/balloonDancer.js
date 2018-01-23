@@ -1,20 +1,43 @@
-var MakeBalloonDancer = function(top, left, timeBetweenSteps) {
-  MakeBalloonDancer.call(this);
-  // var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
+var makeBalloonDancer = function(top, left, timeBetweenSteps) {
+  makeDancer.call(this, top, left, timeBetweenSteps);
 
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
-  this.oldStep = this.step;
 };
 
-MakeBalloonDancer.prototype = Object.create(Dancer.prototype);
-MakeBalloonDancer.prototype.constructor = MakeBalloonDancer;
-
-MakeBalloonDancer.prototype.step = function() {
-  // call the old version of step at the beginning of any call to this new version of step
-  this.oldStep();
-  // toggle() is a jQuery method to show/hide the <span> tag.
-  // See http://api.jquery.com/category/effects/ for this and
-  // other effects you can use on a jQuery-wrapped html tag.
-  this.$node.toggle();
+var styleSettings = {
+  'border': 'none',
+  'background-image' : 'url("imgs/1.gif")',
+  'background-repeat': 'no-repeat',
+  'width': '150px',
+  'height': '300px'
 };
+
+makeBalloonDancer.prototype = Object.create(makeDancer.prototype);
+makeBalloonDancer.prototype.oldStep = makeDancer.prototype.step;
+// makeBalloonDancer.prototype.oldSetPosition = makeDancer.prototype.setPosition;
+makeBalloonDancer.prototype.constructor = makeBalloonDancer;
+
+makeBalloonDancer.prototype.step = function(timeBetweenSteps) {
+  // this.setPosition(); 
+  this.oldStep(timeBetweenSteps);
+  // this.$node.toggle();
+ 
+
+
+  this.$node.css(styleSettings);
+};
+
+
+
+// makeDancer.prototype.setPosition = function(top, left) {
+//   // Use css top and left properties to position our <span> tag
+//   // where it belongs on the page. See http://api.jquery.com/css/
+  
+ 
+//   var styleSettings = {
+//     top: top,
+//     left: left,
+//     borderColor : 'rgb(' + colorGenerator() + ', ' + colorGenerator() + ', ' + colorGenerator() + ')'
+//     // 'background-color': 'rgb(100, 50, 45)'
+//   };
+//   this.$node.css({ });
+// };

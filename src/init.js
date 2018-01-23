@@ -9,12 +9,13 @@ $(document).ready(function() {
      * maker functions available in the global scope, clicking that node
      * will call the function to make the dancer.
      */
-
+  
     /* dancerMakerFunctionName is a string which must match
      * one of the dancer maker functions available in global scope.
      * A new object of the given type will be created and added
      * to the stage.
      */
+    lineUp = false;
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
     // get the maker function for the kind of dancer we're supposed to make
@@ -27,7 +28,20 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
+    dancers.push(dancer); 
+    
     $('body').append(dancer.$node);
+  
+  });
+
+  $('.lineUpButton').on('click', function(event) {
+    lineUp = true;
+    // var left = 100;
+    // for (var i = 0; i < dancers.length; i++) {
+    //   dancers[i].setPosition(50, left);
+    //   // left += 150;
+    // }
   });
 });
 
