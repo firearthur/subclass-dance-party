@@ -18,33 +18,20 @@ makeDancer.prototype.step = function(timeBetweenSteps) {
   // it just schedules the next step
   var context = this; 
   if (!lineUp) {
-  
     setTimeout(function() {
       context.setPosition(Math.random() * 500, Math.random() * 500);
       context.step(timeBetweenSteps);
     }, timeBetweenSteps);
   } else {
-  
-    var left = 100;
-    for (var i = 0; i < dancers.length; i++) {
-      dancers[i].setPosition(50, left);
-      left += 200;
-    }
-
+    context.lineUp();
+    context.step(timeBetweenSteps);
   }
 };
 
-
 makeDancer.prototype.setPosition = function(top, left) {
-  // Use css top and left properties to position our <span> tag
-  // where it belongs on the page. See http://api.jquery.com/css/
-  
- 
   var styleSettings = {
     top: top,
     left: left,
-    // borderColor : 'rgb(' + colorGenerator() + ', ' + colorGenerator() + ', ' + colorGenerator() + ')'
-    // 'background-color': 'rgb(100, 50, 45)'
   };
   this.$node.css(styleSettings);
 };
@@ -52,3 +39,17 @@ makeDancer.prototype.setPosition = function(top, left) {
 var colorGenerator = function() {
   return Math.floor(Math.random() * 256);
 }; 
+
+makeDancer.prototype.lineUp = function() {
+  var left = 100;
+  for (var i = 0; i < dancers.length; i++) {
+    dancers[i].setPosition(50, left);
+    left += 200;
+  }
+};
+
+// makeDancer.prototype.freakOut = function() {
+//   for (var i = 0; i < dancers.length; i++) {
+//     dancers[i].step(100);
+//   }
+// };

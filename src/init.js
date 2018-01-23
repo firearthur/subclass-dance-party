@@ -37,11 +37,6 @@ $(document).ready(function() {
 
   $('.lineUpButton').on('click', function(event) {
     lineUp = true;
-    // var left = 100;
-    // for (var i = 0; i < dancers.length; i++) {
-    //   dancers[i].setPosition(50, left);
-    //   // left += 150;
-    // }
   });
 });
 
