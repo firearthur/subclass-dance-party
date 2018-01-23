@@ -1,10 +1,11 @@
 $(document).ready(function() {
   window.dancers = [];
-  // var $dancers = $('.dancer');
-  // var $dancers = dancers.map((dancer)=>{ return dancer.$node; });
   
   $('.addDancerButton').on('click', function(event) {
     lineUp = 'dance';
+    for (var i = 0; i < dancers.length; i++) {
+      dancers[i].step(Math.random() * 1000);
+    }
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     var dancerMakerFunction = window[dancerMakerFunctionName];  
 
@@ -18,18 +19,14 @@ $(document).ready(function() {
     dancers.push(dancer); 
     
     $('body').append(dancer.$node);
-  
   });
 
   $('.lineUpButton').on('click', function(event) {
     lineUp = 'lineUp';
-    
   });
  
   $('.mingleButton').on('click', function(event) {
-    // dancers[0].mingle();
     lineUp = 'mingle';
-
   });
   
   $('body').on('mouseover', 'span.dancer', function(event) {
