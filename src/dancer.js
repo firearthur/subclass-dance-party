@@ -11,21 +11,45 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   // this.setPosition(top, left);
 };
 
-var lineUp = false;
+// var lineUp = false;
+var lineUp = 'dance';
  
 makeDancer.prototype.step = function(timeBetweenSteps) {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   var context = this; 
-  if (!lineUp) {
+  // if (!lineUp) {
+  //   setTimeout(function() {
+  //     context.setPosition(Math.random() * 500, Math.random() * 500);
+  //     context.step(timeBetweenSteps);
+  //   }, timeBetweenSteps);
+  // } else {
+  //   setTimeout(function() {
+  //     context.lineUp();
+  //     context.step(timeBetweenSteps);
+  //   }, timeBetweenSteps);
+  // }
+
+  if(lineUp === 'dance') {
     setTimeout(function() {
       context.setPosition(Math.random() * 500, Math.random() * 500);
       context.step(timeBetweenSteps);
     }, timeBetweenSteps);
-  } else {
-    context.lineUp();
-    context.step(timeBetweenSteps);
+  } else if (lineUp === 'lineUp') {
+    setTimeout(function() {
+      context.lineUp();
+      context.step(timeBetweenSteps);
+    }, timeBetweenSteps);
+  } else if (lineUp === 'mingle') {
+    setTimeout(function() {
+      context.mingle();
+      context.step(timeBetweenSteps);
+    }, timeBetweenSteps);
   }
+
+
+
+
 };
 
 makeDancer.prototype.setPosition = function(top, left) {
@@ -45,6 +69,21 @@ makeDancer.prototype.lineUp = function() {
   for (var i = 0; i < dancers.length; i++) {
     dancers[i].setPosition(50, left);
     left += 200;
+  }
+};
+
+makeDancer.prototype.mingle = function() {
+  
+  var left = 100;
+  for (var i = 0; i < dancers.length; i++) {
+    if (i % 2 !== 0) {
+      dancers[i].setPosition(50, left);
+      left += 200;  
+    } else {
+      dancers[i].setPosition(50, left);
+      left += 150;
+    }
+    
   }
 };
 
