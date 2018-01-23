@@ -15,7 +15,10 @@ makeDancer.prototype.step = function(timeBetweenSteps) {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   var context = this; 
-  setTimeout(function(){
+  // var top = 0;
+  // var left = 0;
+  setTimeout(function() {
+    context.setPosition(Math.random() * 1000, Math.random() * 1000);
     context.step(timeBetweenSteps);
   }, timeBetweenSteps);
 };
@@ -25,9 +28,14 @@ makeDancer.prototype.setPosition = function(top, left) {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
   //
+  var colorGenerator = function() {
+    return Math.floor(Math.random() * 256);
+  }; 
   var styleSettings = {
     top: top,
-    left: left
+    left: left,
+    borderColor : 'rgb(' + colorGenerator() + ', ' + colorGenerator() + ', ' + colorGenerator() + ')'
+    // 'background-color': 'rgb(100, 50, 45)'
   };
   this.$node.css(styleSettings);
 };
