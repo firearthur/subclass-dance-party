@@ -32,7 +32,6 @@ $(document).ready(function() {
   });
   
   $('body').on('mouseover', 'span.dancer', function(event) {
-    
     $(this).animate({height: '30px', width: '30px'}, 600);
   });
 });

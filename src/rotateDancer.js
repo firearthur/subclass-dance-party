@@ -4,16 +4,16 @@ class RotateDancer extends Dancer {
   }
   step (timeBetweenSteps) {
     super.step(timeBetweenSteps);
-    this.$node.css(styleSettings);
+    this.$node.css(stylesSettings);
   }
 }
 
-var styleSettings = {
+var stylesSettings = {
   'border': 'none',
   'background-image' : 'url("imgs/j.png")',
   'background-repeat': 'no-repeat',
   'rotation-point':'50% 50%',
-  'transform':'rotate(70deg)', 
+  'transform':'rotate(180deg)', 
   'width': '150px',
   'height': '300px',
  
