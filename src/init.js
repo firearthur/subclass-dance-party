@@ -10,9 +10,11 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];  
 
     // make a dancer with a random position
+    console.log(dancerMakerFunctionName);
+    console.log(dancerMakerFunction);
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
 
@@ -30,7 +32,7 @@ $(document).ready(function() {
   });
   
   $('body').on('mouseover', 'span.dancer', function(event) {
-   
+    
     $(this).animate({height: '30px', width: '30px'}, 600);
   });
 });
